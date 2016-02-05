@@ -1,9 +1,31 @@
 
-set Nodes := 0 1 2 3 4 5 6;
+set Nodes := S B24 N24 W24 F B0 B8 B95 B125 B135 B16 B165 N0 N95 N12 N13 N14 N165 N18 N185 W9 W125 W13 W135 W14 W145 W16;
 
-set Nodes := B0 B8 ...
-
-set flightArcs := those that can have at most 1 plan travel on them
+set flightArcs := 
+    B8      N95
+    B95     N12
+    B125    W145
+    B135    W16
+    B125    N16
+    B16     W24
+    B165    N18
+    N95     B125
+    N12     B16
+    N13     W16
+    N14     B165
+    N165    B24
+    N18     B24
+    N18     W24
+    N185    B24
+    W9      N12
+    W125    N165
+    W13     N165
+    W135    B16
+    W14     N165
+    W14     B16
+    W145    B24
+    W16     B24
+    
 
 
 set nonFlightArcs := all others
