@@ -1,0 +1,76 @@
+
+set Nodes := 0 1 2 3 4 5 6;
+
+set Nodes := B0 B8 ...
+
+set flightArcs := those that can have at most 1 plan travel on them
+
+
+set nonFlightArcs := all others
+
+
+param: flightNum revenue := one entry for each arc
+S F None 20000
+S B0 None 0
+S N0 None 0
+S W0 None 0
+B0 B8 None 0
+B8 N9.5 1357 2500
+
+
+
+set Arcs := 
+    0 1 
+    0 2
+    0 3
+    0 4
+    0 5
+    0 6
+    1 2
+    1 3
+    1 4
+    1 5
+    1 6
+    2 3
+    2 4
+    2 5
+    2 6
+    3 4
+    3 5
+    3 6
+    4 5
+    4 6
+    5 6;
+    
+param: c u := 
+    0 1 4500 1000
+    0 2 8300 1000
+    0 3 13400 1000
+    0 4 16800 1000
+    0 5 20100 1000
+    0 6 24000 1000
+    1 2 4500 1000
+    1 3 8300 1000
+    1 4 13400 1000
+    1 5 16800 1000
+    1 6 20100 1000
+    2 3 4500 1000
+    2 4 8300 1000
+    2 5 13400 1000
+    2 6 16800 1000
+    3 4 4500 1000
+    3 5 8300 1000
+    3 6 13400 1000
+    4 5 4500 1000
+    4 6 8300 1000
+    5 6 4500 1000;
+    
+param balance := 
+    0 -1
+    1 0
+    2 0
+    3 0
+    4 0
+    5 0
+    6 1;
+    
