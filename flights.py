@@ -54,7 +54,7 @@ model.x = Var(model.Arcs, within=NonNegativeReals)
 ## Define Objective
 # Minimize the cost of the flow across the network
 def TotalRevenue(M):
-    return sum(M.Revenue[i, j] * M.x[i,j] for (i, j) in M.Arcs)
+    return sum(M.Revenue[i,j] * M.x[i,j] for (i, j) in M.Arcs)
 model.total = Objective(rule=TotalRevenue, sense=maximize)
 
 
@@ -72,11 +72,11 @@ def flow_rule(M, k):
     return FlowIn - FlowOut == M.Balance[k]
 model.FlowBalance = Constraint(model.Nodes, rule=flow_rule)
 
-def end_of_day_locations(M, k, l):
-    FlowIn  = sum(M.x[i,j] for (i,j) in M.Arcs if j == k)
-    FlowOut = sum(M.x[i,j] for (i,j) in M.Arcs if i == l)
-    return FlowIn - FlowOut == 0
-model.BalanceEndLocations = Constraint(model.EndOfDayBridgeArcs, rule=end_of_day_locations)
+# def end_of_day_locations(M, k, l):
+#     FlowIn  = sum(M.x[i,j] for (i,j) in M.Arcs if j == k)
+#     FlowOut = sum(M.x[i,j] for (i,j) in M.Arcs if i == l)
+#     return FlowIn - FlowOut == 0
+# model.BalanceEndLocations = Constraint(model.EndOfDayBridgeArcs, rule=end_of_day_locations)
 
 # Create a problem instance
 # Add appropriate data file 

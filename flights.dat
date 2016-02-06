@@ -1,4 +1,4 @@
-set Nodes := S Binit Ninit Winit B245 N245 W245 Bend Nend Wend F B8 B95 B125 B135 B16 B165 N95 N12 N13 N14 N165 N18 N185 W9 W125 W13 W135 W14 W145 W16;
+set Nodes := S Binit Ninit Winit B0 N0 W0 B245 N245 W245 Bend Nend Wend F B8 B95 B125 B135 B16 B165 N95 N12 N13 N14 N165 N18 N185 W9 W125 W13 W135 W14 W145 W16;
 
 set FlightArcs := 
     B8      N95
@@ -29,29 +29,39 @@ set NonFlightArcs :=
     S       Binit
     S       Ninit
     S       Winit
+
     Binit   B245
     Ninit   N245
     Winit   W245
+
+    Binit   B0
+    Ninit   N0
+    Winit   W0
+
     B245    Bend
     N245    Nend
     W245    Wend
-    Bend    F
-    Nend    F
-    Wend    F
+
     B245    Nend 
     B245    Wend 
     N245    Bend 
     N245    Wend 
     W245    Bend 
     W245    Nend 
-    Binit   B8
+
+    Bend    F
+    Nend    F
+    Wend    F
+
+    B0      B8
     B8      B95
     B95     B125
     B125    B135
     B135    B16
     B16     B165
     B165    B245
-    Ninit   N95
+
+    N0      N95
     N95     N12
     N12     N13
     N13     N14
@@ -59,7 +69,8 @@ set NonFlightArcs :=
     N165    N18
     N18     N185
     N185    N245
-    Winit   W9
+
+    W0      W9
     W9      W125
     W125    W13
     W13     W135
@@ -78,6 +89,9 @@ param Balance :=
     Binit   0
     Ninit   0
     Winit   0
+    B0      0
+    N0      0
+    W0      0
     B245    0
     N245    0
     W245    0
@@ -130,35 +144,43 @@ param: Revenue FlightNumber :=
     W14     B16     2800    9041
     W145    B245    1900    7539
     W16     B245    1500    2710
+
     S       Binit   0       start
     S       Ninit   0       start
     S       Winit   0       start
-    Binit   B8      -15000  active
-    Ninit   N95     -15000  active
-    Winit   W9      -15000  active
+
+    Binit   B0      -15000  active
+    Ninit   N0      -15000  active
+    Winit   W0      -15000  active
+
     Binit   B245    0       inactive
     Ninit   N245    0       inactive
     Winit   W245    0       inactive
+
     B245    Bend    0       stayOvernight
     N245    Nend    0       stayOvernight
     W245    Wend    0       stayOvernight
+
     B245    Nend    -5000   flyOvernight
     B245    Wend    -5000   flyOvernight
     N245    Bend    -5000   flyOvernight
     N245    Wend    -5000   flyOvernight
     W245    Bend    -5000   flyOvernight
     W245    Nend    -5000   flyOvernight
+
     Bend    F       0       finish
     Nend    F       0       finish
     Wend    F       0       finish
-    Binit   B8      0       wait
+    
+    B0      B8      0       wait
     B8      B95     0       wait
     B95     B125    0       wait
     B125    B135    0       wait
     B135    B16     0       wait
     B16     B165    0       wait
     B165    B245    0       wait
-    Ninit   N95     0       wait
+    
+    N0      N95     0       wait
     N95     N12     0       wait
     N12     N13     0       wait
     N13     N14     0       wait
@@ -166,7 +188,8 @@ param: Revenue FlightNumber :=
     N165    N18     0       wait
     N18     N185    0       wait
     N185    N245    0       wait
-    Winit   W9      0       wait
+    
+    W0      W9      0       wait
     W9      W125    0       wait
     W125    W13     0       wait
     W13     W135    0       wait
